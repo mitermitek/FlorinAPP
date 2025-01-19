@@ -1,0 +1,36 @@
+<app-shared-card>
+    <div card-title>
+        Connexion
+    </div>
+    <div card-content>
+        <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+            <div>
+                <mat-form-field class="full-width">
+                    <mat-label>Adresse mail</mat-label>
+                    <input matInput type="email" placeholder="Adresse mail" formControlName="email" required>
+
+                    @if (signInForm.get('email')?.hasError('required')) {
+                    <mat-error>L'adresse mail est requise.</mat-error>
+                    }
+
+                    @if (signInForm.get('email')?.hasError('email')) {
+                    <mat-error>Veuillez entrer une adresse mail valide.</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="full-width">
+                    <mat-label>Mot de passe</mat-label>
+                    <input matInput type="password" placeholder="Mot de passe" formControlName="password" required>
+
+                    @if (signInForm.get('password')?.hasError('required')) {
+                    <mat-error>Le mot de passe est requis.</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-flat-button class="full-width" type="submit">Connexion</button>
+            </div>
+        </form>
+    </div>
+</app-shared-card>
